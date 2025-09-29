@@ -1,8 +1,8 @@
 from playwright.sync_api import sync_playwright
 import pytest
 
-def baseUrl():
-    return "https://the-internet.herokuapp.com/"
+#def baseUrl():
+    #return "https://the-internet.herokuapp.com/"
 
 def ab_test(baseUrl):
     with sync_playwright() as p:
@@ -11,13 +11,15 @@ def ab_test(baseUrl):
         page.goto(baseUrl)
         print("Page Title is ----->"+page.title())
 
-        page.click("href=/abtest")
+        locator = page.locator("text = A/B Testing")
+        locator.click()
         page.wait_for_timeout(20)
         page_header = page.locator("h3")
-        #assert "Variation 1" in page_header.inner_html()
-        print("page header ----> " + page_header.inner_html())
+        assert "Variation 1" in page_header.inner_html()
+        #print("page header ----> " + page_header.inner_html())
 
         browser.close()
 
 if __name__ == "__main__":
-    ab_test(baseUrl)
+    baseurl = "https://the-internet.herokuapp.com/"
+    ab_test(baseUrl=baseurl)
