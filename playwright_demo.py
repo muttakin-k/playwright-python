@@ -11,4 +11,5 @@ def test_run():
         page.screenshot(path="example.png")
         browser.close()
 
-test_run()
+if __name__ == "__main__":
+    test_run()
