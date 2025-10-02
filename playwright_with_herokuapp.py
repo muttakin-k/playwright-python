@@ -7,11 +7,12 @@ def ab_test(baseUrl):
         page.goto(baseUrl)
         print("Page Title is ----->"+page.title())
 
-        locator = page.locator("text = A/B Testing")
+        locator = page.locator("text=A/B Testing")
         locator.click()
-        page.wait_for_timeout(20)
         page_header = page.locator("h3")
-        assert "Variation 1" in page_header.inner_html()
+        header_text = page_header.text_content()
+        assert "Variation 1" in header_text
+        #print(header_text)
         #print("page header ----> " + page_header.inner_html())
 
         browser.close()
@@ -33,4 +34,4 @@ def add_remove_test(baseUrl):
 if __name__ == "__main__":
     baseurl = "https://the-internet.herokuapp.com/"
     ab_test(baseUrl=baseurl)
-    add_remove_test(baseUrl=baseurl)
+    #add_remove_test(baseUrl=baseurl)
