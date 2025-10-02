@@ -1,8 +1,4 @@
 from playwright.sync_api import sync_playwright
-import pytest
-
-#def baseUrl():
-    #return "https://the-internet.herokuapp.com/"
 
 def ab_test(baseUrl):
     with sync_playwright() as p:
@@ -20,6 +16,21 @@ def ab_test(baseUrl):
 
         browser.close()
 
+def add_remove_test(baseUrl):
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        page = browser.new_page()
+
+        locator = page.locator("text = Add/Remove Elements")
+        locator.click()
+        page.wait_for_timeout(20)
+
+        page_header = page.locator("h3")
+        assert "Add/Remove" in page_header.inner_html()
+
+        browser.close()
+
 if __name__ == "__main__":
     baseurl = "https://the-internet.herokuapp.com/"
     ab_test(baseUrl=baseurl)
+    add_remove_test(baseUrl=baseurl)
