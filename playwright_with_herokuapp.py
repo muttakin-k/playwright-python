@@ -31,6 +31,19 @@ def add_remove_test(baseUrl):
         assert "Add/Remove" in page_header.inner_html()
         print(page_header.inner_html())
 
+        browser.close()
+
+def test_internet_login():
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        page = browser.new_page()
+        # Pass username and password in URL
+        page.goto("https://admin:admin1@the-internet.herokuapp.com/basic_auth")
+
+        # Verify successful login message
+        content = page.locator("p").text_content()
+        print("Page content:", content)
+        #assert "Congratulations" in content
         
 
         browser.close()
@@ -38,4 +51,7 @@ def add_remove_test(baseUrl):
 if __name__ == "__main__":
     baseurl = "https://the-internet.herokuapp.com/"
     #ab_test(baseUrl=baseurl)
-    add_remove_test(baseUrl=baseurl)
+    # adding clicking button
+    # add_remove_test(baseUrl=baseurl)
+    test_internet_login()
+
