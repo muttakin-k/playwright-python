@@ -1,5 +1,3 @@
-import conftest.py
-
 def test_basic_auth(page):
     page.goto("https://the-internet.herokuapp.com/basic_auth")
     content = page.locator("p").text_content()
