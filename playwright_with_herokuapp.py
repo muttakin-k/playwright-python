@@ -29,6 +29,8 @@ def add_remove_test(baseUrl):
 
         page_header = page.locator("h3")
         assert "Add/Remove" in page_header.inner_html()
+
+        # adding a new comment to continue the github progress
         print(page_header.inner_html())
 
         browser.close()
