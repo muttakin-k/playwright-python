@@ -1,4 +1,4 @@
-def ab_test(page):
+def test_ab(page):
     print("Page Title is ----->"+page.title())
 
     locator = page.locator("text=A/B Testing")
