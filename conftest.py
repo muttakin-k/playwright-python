@@ -2,7 +2,11 @@ import pytest
 from playwright.sync_api import sync_playwright
 
 @pytest.fixture(scope="session")
-def browser_context():
+def baseUrl():
+    return "https://the-internet.herokuapp.com/"
+
+@pytest.fixture(scope="session")
+def browser_context_login():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
         login_context = browser.new_context(
@@ -13,8 +17,24 @@ def browser_context():
         yield login_context
         browser.close()
 
+@pytest.fixture(scope="session")
+def browser_context():
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        browser_context = browser.new_context()
+        yield browser_context
+        browser.close()
+
+
 @pytest.fixture()
-def page(browser_context):
+def login_page(browser_context_login):
+    page = browser_context_login.new_page()
+    yield page
+    page.close()
+
+@pytest.fixture()
+def page(browser_context, baseUrl):
     page = browser_context.new_page()
+    page.goto(baseUrl)
     yield page
     page.close()
