@@ -1,5 +1,5 @@
 def test_ab(page):
-    print("Page Title is ----->"+page.title())
+    #print("Page Title is ----->"+page.title())
 
     locator = page.locator("text=A/B Testing")
     locator.click()
