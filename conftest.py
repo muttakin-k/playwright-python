@@ -1,4 +1,5 @@
 import pytest
+import os
 from playwright.sync_api import sync_playwright
 
 @pytest.fixture(scope="session")
@@ -38,3 +39,8 @@ def page(browser_context, baseUrl):
     page.goto(baseUrl)
     yield page
     page.close()
+
+def take_screenshot(page, module):
+    sc_path = os.path.join("screenshots", module+".png")
+    page.screenshot(path=sc_path, full_page=True)
+    
