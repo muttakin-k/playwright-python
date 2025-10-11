@@ -7,9 +7,10 @@ def test_challenging_dom(page):
     page_header = page.locator("h3")
     assert "Challenging" in page_header.inner_html()
 
-    blue_button = page.locator("button.button")
-    red_button = page.locator("button.button.alert")
-    green_button = page.locator("button.button.success")
+    buttons = page.locator(".button")
+    blue_button = buttons.nth(0)
+    red_button = buttons.nth(1)
+    green_button = buttons.nth(2)
 
     blue_button.click()
     take_screenshot(page, "blue_button_clicked")
