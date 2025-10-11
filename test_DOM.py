@@ -21,3 +21,18 @@ def test_challenging_dom(page):
     green_button.click()
     take_screenshot(page, "green_button_clicked")
 
+def test_table_vals(page):
+    locator = page.locator("text=Challenging DOM")
+    locator.click()
+
+    table = page.locator("table")
+    rows = table.locator("tbody")
+    row_count = rows.count()
+
+    for i in range(row_count):
+        cells = rows.nth(i).locator("td")
+        coll_count = cells.count()
+
+        row_data = [cells.nth(j).inner_html() for j in range(coll_count)]
+
+        print(f"Row {i+1}:{row_data}")
