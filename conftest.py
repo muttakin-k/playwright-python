@@ -1,5 +1,6 @@
 import pytest
 import os
+import csv
 from playwright.sync_api import sync_playwright
 
 @pytest.fixture(scope="session")
@@ -43,4 +44,7 @@ def page(browser_context, baseUrl):
 def take_screenshot(page, module):
     sc_path = os.path.join("screenshots", module+".png")
     page.screenshot(path=sc_path, full_page=True)
+
+def write_data_to_csv():
+    pass
     

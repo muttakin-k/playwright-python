@@ -1,4 +1,4 @@
-from conftest import take_screenshot
+from conftest import take_screenshot, write_data_to_csv
 
 def test_challenging_dom(page):
     locator = page.locator("text=Challenging DOM")
@@ -29,6 +29,8 @@ def test_table_vals(page):
     rows = table.locator("tbody")
     row_count = rows.count()
 
+    data = []
+
     for i in range(row_count):
         cells = rows.nth(i).locator("td")
         coll_count = cells.count()
@@ -36,3 +38,6 @@ def test_table_vals(page):
         row_data = [cells.nth(j).inner_html() for j in range(coll_count)]
 
         print(f"Row {i+1}:{row_data}")
+        data.append(row_data)
+
+    
