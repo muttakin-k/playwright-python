@@ -30,6 +30,7 @@ def test_table_vals(page):
     row_count = rows.count()
 
     data = []
+    filename = "table_data.csv"
 
     for i in range(row_count):
         cells = rows.nth(i).locator("td")
@@ -40,4 +41,4 @@ def test_table_vals(page):
         print(f"Row {i+1}:{row_data}")
         data.append(row_data)
 
-    
+    write_data_to_csv(filename, data)
