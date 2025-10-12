@@ -1,4 +1,4 @@
-from conftest import take_screenshot, write_data_to_csv
+from helper_functions import take_screenshot, write_data_to_csv
 
 def test_challenging_dom(page):
     locator = page.locator("text=Challenging DOM")

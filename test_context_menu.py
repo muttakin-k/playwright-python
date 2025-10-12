@@ -1,10 +1,12 @@
-from conftest import take_screenshot
+#from conftest import take_screenshot
+from helper_functions import handle_dialog
 
 def test_context_menu(page):
     locator = page.locator("text=Context Menu")
     locator.click()
 
-    hotspot_locator = page.locate("div#hot-spot")
-    hotspot_locator.click(button="Right")
+    hotspot_locator = page.locator("#hot-spot")
+    hotspot_locator.click(button="right")
 
-    take_screenshot(page, "context_menu_alert")
+    #take_screenshot(page, "context_menu_alert")
+
