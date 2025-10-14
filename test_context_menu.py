@@ -1,9 +1,3 @@
-#from conftest import take_screenshot
-#from helper_functions import handle_dialog
-
-def handle_dialog(dialog):
-    print(f"Alert message: {dialog.message()}")
-    dialog.accept()
 
 def test_context_menu(page):
     locator = page.locator("text=Context Menu")
@@ -12,6 +6,7 @@ def test_context_menu(page):
     hotspot_locator = page.locator("#hot-spot")
     hotspot_locator.click(button="right")
 
-    #take_screenshot(page, "context_menu_alert")
+    # this section is not working, the dialog message is not printing
+    # Will come back to this
     page.once("dialog", lambda dialog: print(dialog.message()) or dialog.accept())
 
