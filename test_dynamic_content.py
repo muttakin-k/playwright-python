@@ -12,6 +12,4 @@ def test_dynamic_content(page):
     enable_static = "?with_content=static"
     page.goto(dc_url+enable_static)
 
-    # this is a dummy line
-
     take_screenshot(page, "dc_after_refresh")
