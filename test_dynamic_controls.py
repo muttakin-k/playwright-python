@@ -3,10 +3,11 @@ def test_dynamic_controls(page):
     locator.click()
 
     # First testing the add/remove button and asserting the correct result
-    page.locator("text=Remove").click()
+    page.get_by_role("button", name="Remove").click()
     message = page.locator("#message")
-    assert message == "It's gone!"
+    assert message.inner_text() == "It's gone!"
 
-    page.locator("text=Add").click()
+    page.get_by_role("button", name="Add").click()
+    #page.locator("text=Add").click()
     message = page.locator("#message")
-    assert message == "It's back!"
+    assert message.inner_text() == "It's back!"
