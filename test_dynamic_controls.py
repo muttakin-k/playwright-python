@@ -13,10 +13,10 @@ def test_dynamic_controls(page):
     assert message.inner_text() == "It's gone!"
 
     # Clicking on the add button for the first time
-    # At this time, the message is supposed to be there so asserting
+    # At this time, the message is supposed to be there, so asserting
     message_locator = page.locator("#message")
     assert message_locator.count() == 1
-    page.get_by_role("button", ).click()
+    page.get_by_role("button", name="Add").click()
     message = page.locator("#message")
     assert message.inner_text() == "It's back!"
 
