@@ -1,9 +1,9 @@
 def dl1(p):
     p.get_by_role("link", name="Example 1", exact=False).click()
-    h4_locator = p.locator("h4")
-    assert "Example 1:" in h4_locator
+    h4_locator = p.locator("h4").nth(0)
+    assert "Example 1:" in h4_locator.inner_html()
 
-def dynamic_loading(page):
+def test_dynamic_loading(page):
     locator = page.locator("text=Dynamic Loading")
     locator.click()
 
