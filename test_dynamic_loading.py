@@ -20,6 +20,17 @@ def dl2(p):
     h4_locator = p.locator("h4").nth(0)
     assert "Example 1:" not in h4_locator.inner_html()
 
+    # clicking the button 'Start'
+    p.get_by_role("button", name="Start").click()
+
+    # Waiting until hello worls is visible
+    p.wait_for_selector("#finish", state="visible")
+
+    # Asserting
+    div = p.locator("#finish")
+    hw = div.locator('h4')
+    assert hw.inner_text() == "Hello World!"
+
 
 
 def test_dynamic_loading(page):
@@ -27,7 +38,7 @@ def test_dynamic_loading(page):
     locator.click()
 
     # Testing the first example: Dynamic Loading 1
-    dl1(page)
+    #dl1(page)
 
     # Testing the first example: Dynamic Loading 2
-    #dl2(page)
+    dl2(page)
