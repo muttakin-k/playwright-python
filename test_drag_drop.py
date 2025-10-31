@@ -27,3 +27,5 @@ def test_drag_drop(page):
 
     print(f"After drag: A={header_a}, B={header_b}")
     assert header_a == "A" and header_b == "B"
+
+    #this is a comment
