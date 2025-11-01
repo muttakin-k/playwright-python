@@ -23,7 +23,6 @@ def test_Entry_ad(page):
     page.locator("text=click here")
 
     # Now the modal should be visible again, so asserting that
-    #page.reload()
     modal = page.locator("#modal")
     expect(modal).to_be_visible()
 
