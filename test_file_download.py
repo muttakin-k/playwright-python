@@ -1,8 +1,7 @@
 import os
 
 def test_file_download(page):
-    locator = page.locator("text=File Download").first
-    locator.click()
+    page.goto("https://the-internet.herokuapp.com/download")
 
     intended_file_name = "bb.txt"
     file_locator = page.locator("text="+intended_file_name)
