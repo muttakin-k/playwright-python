@@ -2,7 +2,6 @@ def test_file_upload(page):
     page.goto("https://the-internet.herokuapp.com/upload")
 
     choose_file_button = page.locator("input#file-upload")
-    #choose_file_button.click()
 
     file_path = "C:/Users/user/Downloads/"
     file_name = "images.jpeg"
