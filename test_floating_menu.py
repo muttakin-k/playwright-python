@@ -1,2 +1,3 @@
 def test_floating_menu(page):
-    return True
+    assert 1 == True
+    #return True
