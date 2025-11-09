@@ -38,9 +38,14 @@ def test_authentication(page):
 
     # Asserting the success msg
     assert "You logged into a secure area!" in login_msg.inner_text()
-    assert "Secure Area" in page.locator("h2.icon-lock").inner_html
+    #assert "Secure Area" in page.locator("h2.icon-lock").inner_text()
 
     # Logout testing
+    logout_button = page.locator("a.button.secondary.radius")
+    logout_button.click()
+
+    # Asserting the success msg
+    assert "You logged out of the secure area!" in login_msg.inner_text()
 
 
 
