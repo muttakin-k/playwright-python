@@ -4,6 +4,10 @@ def take_screenshot(page, module):
     sc_path = os.path.join("screenshots", module+".png")
     page.screenshot(path=sc_path, full_page=True)
 
+def take_screenshot_context(page, module):
+    sc_path = os.path.join("screenshots", module+".png")
+    page.screenshot(path=sc_path, full_page=False)
+
 def write_data_to_csv(filename, data):
     with open(filename, "w", newline="\n") as f:
         writer = csv.writer(f)
