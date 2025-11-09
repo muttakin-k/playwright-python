@@ -18,8 +18,18 @@ def test_authentication(page):
     passowrd.fill(invalid_pass)
     submit_btn.click()
 
-    print()
+    # Asserting the error msg
+    # It will be invalid username in this case
+    assert "Your username is invalid!" in login_error.inner_text() 
+
+    # testing with invalid pass
+    username.fill(valid_user)
+    passowrd.fill(invalid_pass)
+    submit_btn.click()
 
     # Asserting the error msg
-    assert "Your username is invalid!" in login_error.inner_text() 
+    # It will be invalid password in this case
+    assert "Your password is invalid!" in login_error.inner_text()
+
+    
 
