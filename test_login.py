@@ -1,4 +1,4 @@
-def test_authentication(page):
+def test_authentication(page: Any):
     page.goto("https://the-internet.herokuapp.com/login")
 
     username = page.locator("#username")
@@ -11,7 +11,7 @@ def test_authentication(page):
     invalid_user = "t"
     invalid_pass = "SSecretPassword!"
 
-    login_error = page.locator("#flash")
+    login_msg = page.locator("#flash")
 
     # testing with invalid user-pass combination
     username.fill(invalid_user)
@@ -20,7 +20,7 @@ def test_authentication(page):
 
     # Asserting the error msg
     # It will be invalid username in this case
-    assert "Your username is invalid!" in login_error.inner_text() 
+    assert "Your username is invalid!" in login_msg.inner_text() 
 
     # testing with invalid pass
     username.fill(valid_user)
@@ -29,7 +29,20 @@ def test_authentication(page):
 
     # Asserting the error msg
     # It will be invalid password in this case
-    assert "Your password is invalid!" in login_error.inner_text()
+    assert "Your password is invalid!" in login_msg.inner_text()
 
+    # Happy path login
+    username.fill(valid_user)
+    passowrd.fill(valid_pass)
+    submit_btn.click()
+
+    # Asserting the success msg
+    assert "You logged into a secure area!" in login_msg.inner_text()
+    assert "Secure Area" in page.locator("h2.icon-lock").inner_html
+
+    # Logout testing
     
+
+
+
 
