@@ -1,4 +1,4 @@
-def test_authentication(page: Any):
+def test_authentication(page):
     page.goto("https://the-internet.herokuapp.com/login")
 
     username = page.locator("#username")
@@ -41,7 +41,7 @@ def test_authentication(page: Any):
     assert "Secure Area" in page.locator("h2.icon-lock").inner_html
 
     # Logout testing
-    
+
 
 
 
