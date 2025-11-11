@@ -6,4 +6,3 @@ def nested_frames_test():
 
 def test_frames(page):
     pass
-# thi is a new test command
